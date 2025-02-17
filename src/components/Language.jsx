@@ -1,6 +1,11 @@
 // componente
-export default function Language() {
+
+export default function Language({ title, description }) {
+
     return (
-        <h1>Use state</h1>
-    )
+        <div>
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </div>
+      );
 }

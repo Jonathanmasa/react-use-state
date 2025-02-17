@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import Language from "./Language.jsx";
 
 const languages = [
@@ -35,13 +37,35 @@ const languages = [
 
 
 // componente
-export default function  LanguageList() {
-    return (
+export default function LanguageList() {
+  // Stato per il linguaggio selezionato (inizialmente il primo nell'array)
+  const [selectedLanguage, setSelectedLanguage] = useState(languages[0]);
+
+  return (
+    <div className="text-center mt-5">
+      <h2 className="mb-4">Learn Web development</h2>
+
+      {/* Lista di bottoni */}
       <div>
-        <Language />
+        {languages.map((lang) => (
+          <button  type="button" className="btn btn-warning m-2"
+            key={lang.id}
+            onClick={() => setSelectedLanguage(lang)}
+          >
+
+            {lang.title}
+          </button>
+        ))}
       </div>
-    )
-      
-        
-    
+
+      {/* Card che mostra i dettagli del linguaggio selezionato */}
+      <div className="d-flex justyfi-content-center">
+        <div class="card w-75 card-body m-4 ">
+          <h5 className="card-title mb-2 card-header">{selectedLanguage.title}</h5>
+          <p class="card-text text-start">{selectedLanguage.description}</p>
+        </div>
+      </div>
+
+    </div> 
+  );
 }
